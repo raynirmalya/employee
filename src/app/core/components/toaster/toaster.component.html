@@ -1,0 +1,12 @@
+<ng-template
+  *ngIf="toasterConfigs && toasterConfigs.length > 0"
+  ngFor
+  let-toasterConfig
+  [ngForOf]="toasterConfigs"
+  let-i="index"
+>
+  <div class="jarvis-toaster" [ngClass]="toasterConfig.type.style" [@rowEaseInOut]>
+    <!-- <ng-container *ngTemplateOutlet="toasterConfig.content"></ng-container> -->
+    {{ toasterConfig.message }}
+  </div>
+</ng-template>

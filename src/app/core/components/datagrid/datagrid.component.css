@@ -1,0 +1,29 @@
+table {
+  border: none ;
+  font-size: 12px;
+  border-collapse: collapse;
+  border-spacing: 0px 0px;
+  background: #fff;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  display: block;
+}
+.filter-tr th {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+table .mat-form-field {
+  width: 100px !important;
+}
+thead tr:first-child {
+  background-color: #302f2f;
+  color: white;
+}
+td, th {
+  /* width: 120px; */
+  /* float: left; */
+  padding: 10px;
+}
+th {
+  text-align: left;
+  cursor: pointer;
+}

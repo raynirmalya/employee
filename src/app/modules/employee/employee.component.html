@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h3>Employee Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <button class="btn btn-primary pull-right" (click)="add()">
+              Add Employee
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 mt-2">
+            <app-datagrid [gridData]="gridData" [sortable]="true">
+              <app-column
+                field="employee_name"
+                title="Name"
+                width="250"
+              ></app-column>
+              <app-column
+                field="employee_salary"
+                title="Salary"
+                width="200"
+              ></app-column>
+              <app-column
+                field="employee_age"
+                title="Age"
+                width="200"
+              ></app-column>
+            </app-datagrid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-sm-12">
+    <mat-form-field class="m-3">
+      <mat-label>Search Name</mat-label>
+      <input matInput name="name" id="name" [(ngModel)]="name" placeholder="" />
+    </mat-form-field>
+    <div>
+      <div class="col-sm-12">
+        <table
+          aria-describedby="table"
+          class="table table-bordered table-responsive"
+          id="{{ tableId }}"
+        >
+          <thead>
+            <tr>
+              <ng-template ngFor let-col [ngForOf]="columnConfig" let-i="index">
+                <th id="{{ tableId }}-{{ i }}" [style.width.px]="col.width">
+                  <div
+                    [style.width.px]="col.width"
+                    class="header-container"
+                    (click)="sortColumn(col.field, $event)"
+                  >
+                    <span *ngIf="sortable" class="pull-left">
+                      <em
+                        class="fa"
+                        [ngClass]="{
+                          '':
+                            +sortingColStatus[col.field] ===
+                            +sortingStatus.NORMAL,
+                          'fa-arrow-down':
+                            +sortingColStatus[col.field] === +sortingStatus.ASC,
+                          'fa-arrow-up':
+                            +sortingColStatus[col.field] === +sortingStatus.DESC
+                        }"
+                        >&nbsp;</em
+                      >
+                    </span>
+                    <span
+                      class="header-txt"
+                      *ngIf="!col.headerTemplate"
+                      title="{{ col.title }}"
+                      >{{ col.title }}</span
+                    >
+                    <span
+                      class="header-template-wrapper"
+                      *ngIf="col.headerTemplate"
+                      title="{{ col.title }}"
+                    >
+                      <ng-container
+                        *ngTemplateOutlet="col.headerTemplate"
+                      ></ng-container>
+                    </span>
+                  </div>
+                </th>
+              </ng-template>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-template
+              ngFor
+              let-row
+              [ngForOf]="gridData | search: name"
+              let-rowIndex="index"
+            >
+              <tr>
+                <ng-template
+                  ngFor
+                  let-col
+                  [ngForOf]="columnConfig"
+                  let-rowIndex="index"
+                >
+                  <td [style.width.px]="col.width">
+                    <div class="body-template-wrapper">
+                      <div
+                        class="label-txt"
+                        title="{{ row[col.field] }}"
+                        *ngIf="!col.bodyTemplate"
+                      >
+                        {{ row[col.field] }}
+                      </div>
+                      <div *ngIf="col.bodyTemplate">
+                        <app-body-template-loader
+                          [column]="col"
+                          [rowData]="row"
+                          [rowIndex]="rowIndex"
+                        ></app-body-template-loader>
+                      </div>
+                    </div>
+                  </td>
+                </ng-template>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

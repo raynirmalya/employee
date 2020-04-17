@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Add Employee Details</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Employee Name</mat-label>
+            <input
+              matInput
+              name="name"
+              id="name"
+              [(ngModel)]="employeeDetails.name"
+              placeholder=""
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Salary</mat-label>
+            <input
+              appNumeric
+              allowedChars=","
+              name="salary"
+              id="salary"
+              [(ngModel)]="employeeDetails.salary"
+              placeholder=""
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Age</mat-label>
+            <input
+              appNumeric
+              name="age"
+              id="age"
+              [(ngModel)]="employeeDetails.age"
+              placeholder=""
+              matInput
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+          <button class="btn btn-primary" (click)="submit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
